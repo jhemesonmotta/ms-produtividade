@@ -1,4 +1,4 @@
-package com.jhemeson.ferramentaprodutividadeback.entity;
+package com.jhemeson.msusuarios.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

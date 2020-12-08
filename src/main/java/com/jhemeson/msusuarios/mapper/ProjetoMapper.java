@@ -1,7 +1,7 @@
-package com.jhemeson.ferramentaprodutividadeback.mapper;
+package com.jhemeson.msusuarios.mapper;
 
-import com.jhemeson.ferramentaprodutividadeback.dto.ProjetoDTO;
-import com.jhemeson.ferramentaprodutividadeback.entity.Projeto;
+import com.jhemeson.msusuarios.dto.ProjetoDTO;
+import com.jhemeson.msusuarios.entity.Projeto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

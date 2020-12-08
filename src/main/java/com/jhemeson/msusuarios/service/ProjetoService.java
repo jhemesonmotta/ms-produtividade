@@ -1,10 +1,10 @@
-package com.jhemeson.ferramentaprodutividadeback.service;
+package com.jhemeson.msusuarios.service;
 
-import com.jhemeson.ferramentaprodutividadeback.dto.MessageResponseDTO;
-import com.jhemeson.ferramentaprodutividadeback.dto.ProjetoDTO;
-import com.jhemeson.ferramentaprodutividadeback.entity.Projeto;
-import com.jhemeson.ferramentaprodutividadeback.mapper.ProjetoMapper;
-import com.jhemeson.ferramentaprodutividadeback.repository.ProjetoRepository;
+import com.jhemeson.msusuarios.dto.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.ProjetoDTO;
+import com.jhemeson.msusuarios.entity.Projeto;
+import com.jhemeson.msusuarios.mapper.ProjetoMapper;
+import com.jhemeson.msusuarios.repository.ProjetoRepository;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

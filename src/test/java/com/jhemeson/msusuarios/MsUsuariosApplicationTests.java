@@ -1,10 +1,10 @@
-package com.jhemeson.ferramentaprodutividadeback;
+package com.jhemeson.msusuarios;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FerramentaProdutividadeBackApplicationTests {
+class MsUsuariosApplicationTests {
 
 	@Test
 	void contextLoads() {

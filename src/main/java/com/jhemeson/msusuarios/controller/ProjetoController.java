@@ -1,10 +1,10 @@
-package com.jhemeson.ferramentaprodutividadeback.controller;
+package com.jhemeson.msusuarios.controller;
 
-import com.jhemeson.ferramentaprodutividadeback.dto.ComandoAddVariosProjetos;
-import com.jhemeson.ferramentaprodutividadeback.dto.MessageResponseDTO;
-import com.jhemeson.ferramentaprodutividadeback.dto.ProjetoDTO;
-import com.jhemeson.ferramentaprodutividadeback.entity.Projeto;
-import com.jhemeson.ferramentaprodutividadeback.service.ProjetoService;
+import com.jhemeson.msusuarios.dto.ComandoAddVariosProjetos;
+import com.jhemeson.msusuarios.dto.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.ProjetoDTO;
+import com.jhemeson.msusuarios.entity.Projeto;
+import com.jhemeson.msusuarios.service.ProjetoService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
