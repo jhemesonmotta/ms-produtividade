@@ -22,4 +22,8 @@ public class Usuario {
 
     @Column(name = "senha")
     private String senha;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
+    @JoinColumn(name = "pessoa_id")
+    private Pessoa pessoa;
 }
