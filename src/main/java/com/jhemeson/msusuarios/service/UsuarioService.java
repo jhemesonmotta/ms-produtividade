@@ -34,4 +34,13 @@ public class UsuarioService {
         return usuarioMapper.toDTO(usuario);
     }
 
+    public MessageResponseDTO update(UsuarioDTO usuarioDTO) {
+        Usuario usuarioToUpdate = usuarioMapper.toModel(usuarioDTO);
+        Usuario usuarioUpdated = usuarioRepository.save(usuarioToUpdate);
+
+        return MessageResponseDTO.builder().
+                message(usuarioUpdated.getEmail() + " atualizado com sucesso.")
+                .build();
+    }
+
 }
