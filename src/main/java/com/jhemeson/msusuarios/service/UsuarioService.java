@@ -2,7 +2,6 @@ package com.jhemeson.msusuarios.service;
 
 import com.jhemeson.msusuarios.dto.MessageResponseDTO;
 import com.jhemeson.msusuarios.dto.UsuarioDTO;
-import com.jhemeson.msusuarios.entity.Projeto;
 import com.jhemeson.msusuarios.entity.Usuario;
 import com.jhemeson.msusuarios.mapper.UsuarioMapper;
 import com.jhemeson.msusuarios.repository.UsuarioRepository;
