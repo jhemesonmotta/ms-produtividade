@@ -15,4 +15,5 @@ public class PessoaDTO {
     private String genero;
     private String dataNascimento;
     private String perfilGithub;
+
 }

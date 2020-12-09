@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioDTO {
-
+public class AlocacaoDTO {
     private Long id;
-    private String email;
-    private String senha;
+    private EmpresaDTO empresa;
     private PessoaDTO pessoa;
+    private String cargo;
+    private String dataInicio;
+    private String dataFim;
 }
