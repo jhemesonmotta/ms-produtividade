@@ -6,6 +6,7 @@ import com.jhemeson.msusuarios.entity.Projeto;
 import com.jhemeson.msusuarios.entity.Usuario;
 import com.jhemeson.msusuarios.mapper.UsuarioMapper;
 import com.jhemeson.msusuarios.repository.UsuarioRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +28,10 @@ public class UsuarioService {
                 message(usuarioCreated.getEmail() + " criado com sucesso.")
                 .build();
     }
+
+    public UsuarioDTO findById(Long id) throws NotFoundException {
+        Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuário não encontrado."));
+        return usuarioMapper.toDTO(usuario);
+    }
+
 }
