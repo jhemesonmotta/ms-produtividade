@@ -43,4 +43,8 @@ public class AlocacaoService {
                         + alocacaoUpdated.getEmpresa().getNome() + " atualizada com sucesso.")
                 .build();
     }
+
+    // TODO: fazer service para buscar alocação por usuário
+    // TODO: fazer service para buscar alocação por empresa
+    // TODO: fazer service para buscar alocação por usuário/empresa
 }
