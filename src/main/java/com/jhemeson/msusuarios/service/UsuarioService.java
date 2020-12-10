@@ -1,6 +1,7 @@
 package com.jhemeson.msusuarios.service;
 
 import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Usuario.RequestLoginDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioCompletoDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioDTO;
 import com.jhemeson.msusuarios.entity.Usuario;
@@ -61,6 +62,12 @@ public class UsuarioService {
         return usuariosCompletos;
     }
 
+    public UsuarioCompletoDTO logarUsuario(RequestLoginDTO requestLoginDTO) throws NotFoundException {
+        Usuario usuario = usuarioRepository
+                .findUsuarioByEmailAndSenha(requestLoginDTO.getEmail(), requestLoginDTO.getSenha());
+        return transformarParaUsuarioCompleto(usuario);
+    }
+
     private UsuarioCompletoDTO transformarParaUsuarioCompleto(Usuario usuario) throws NotFoundException {
         UsuarioDTO usuarioDTO = usuarioMapper.toDTO(usuario);
 
@@ -71,7 +78,5 @@ public class UsuarioService {
                 .pessoa(pessoaService.findById(usuarioDTO.getId()))
                 .build();
     }
-
-    // TODO: login de usuário > findUserByEmail
 
 }
