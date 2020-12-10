@@ -36,9 +36,9 @@ public class UsuarioService {
                 .build();
     }
 
-    public UsuarioDTO findById(Long id) throws NotFoundException {
+    public UsuarioCompletoDTO findById(Long id) throws NotFoundException {
         Usuario usuario = usuarioRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuário não encontrado."));
-        return usuarioMapper.toDTO(usuario);
+        return transformarParaUsuarioCompleto(usuario);
     }
 
     public MessageResponseDTO update(UsuarioDTO usuarioDTO) {
@@ -51,7 +51,6 @@ public class UsuarioService {
     }
 
     public List<UsuarioCompletoDTO> findAll() throws NotFoundException {
-        // UsuarioCompletoDTO
         List<Usuario> usuarios = usuarioRepository.findAll();
         List<UsuarioCompletoDTO> usuariosCompletos = new ArrayList<>();
 

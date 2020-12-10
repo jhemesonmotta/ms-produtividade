@@ -23,7 +23,7 @@ public class UsuarioController {
     }
 
     @GetMapping("{id}")
-    public UsuarioDTO buscarUsuarioPorId(@PathVariable Long id) throws NotFoundException {
+    public UsuarioCompletoDTO buscarUsuarioPorId(@PathVariable Long id) throws NotFoundException {
         return usuarioService.findById(id);
     }
 
