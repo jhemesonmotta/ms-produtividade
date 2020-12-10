@@ -2,7 +2,9 @@ package com.jhemeson.msusuarios.service;
 
 import com.jhemeson.msusuarios.dto.MessageResponseDTO;
 import com.jhemeson.msusuarios.dto.UsuarioDTO;
+import com.jhemeson.msusuarios.entity.Pessoa;
 import com.jhemeson.msusuarios.entity.Usuario;
+import com.jhemeson.msusuarios.mapper.PessoaMapper;
 import com.jhemeson.msusuarios.mapper.UsuarioMapper;
 import com.jhemeson.msusuarios.repository.UsuarioRepository;
 import javassist.NotFoundException;
@@ -23,6 +25,7 @@ public class UsuarioService {
 
     public MessageResponseDTO create(UsuarioDTO usuarioDTO) {
         Usuario usuarioToCreate = usuarioMapper.toModel(usuarioDTO);
+        usuarioToCreate.setPessoaId(usuarioDTO.getPessoaId());
         Usuario usuarioCreated = usuarioRepository.save(usuarioToCreate);
 
          return MessageResponseDTO.builder().

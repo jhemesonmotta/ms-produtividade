@@ -17,13 +17,12 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", unique = true)
+    @Column(unique = true)
     private String email;
 
-    @Column(name = "senha")
+    @Column
     private String senha;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoa;
+    @Column(name = "pessoa_id")
+    private Long pessoaId;
 }
