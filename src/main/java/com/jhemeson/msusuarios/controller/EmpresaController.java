@@ -2,10 +2,13 @@ package com.jhemeson.msusuarios.controller;
 
 import com.jhemeson.msusuarios.dto.EmpresaDTO;
 import com.jhemeson.msusuarios.dto.MessageResponseDTO;
+import com.jhemeson.msusuarios.entity.Empresa;
 import com.jhemeson.msusuarios.service.EmpresaService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/empresa")
@@ -23,6 +26,11 @@ public class EmpresaController {
         return empresaService.findById(id);
     }
 
+    @GetMapping
+    public List<Empresa> listarEmpresas() {
+        return empresaService.findAll();
+    }
+
     @PostMapping
     public MessageResponseDTO adicionarEmpresa(@RequestBody EmpresaDTO empresaDTO) {
         return empresaService.create(empresaDTO);
@@ -33,3 +41,4 @@ public class EmpresaController {
         return empresaService.update(empresaDTO);
     }
 }
+

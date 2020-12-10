@@ -9,6 +9,8 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class EmpresaService {
     private EmpresaRepository empresaRepository;
@@ -40,5 +42,9 @@ public class EmpresaService {
         return MessageResponseDTO.builder().
                 message(empresaUpdated.getNome() + " atualizado com sucesso.")
                 .build();
+    }
+
+    public List<Empresa> findAll() {
+        return empresaRepository.findAll();
     }
 }
