@@ -9,6 +9,8 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AlocacaoService {
     private AlocacaoRepository alocacaoRepository;
@@ -50,6 +52,9 @@ public class AlocacaoService {
                 .build();
     }
 
+    public List<Alocacao> findAll() {
+        return alocacaoRepository.findAll();
+    }
     // TODO: fazer service para buscar alocação por usuário
     // TODO: fazer service para buscar alocação por empresa
     // TODO: fazer service para buscar alocação por usuário/empresa
