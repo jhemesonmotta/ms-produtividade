@@ -26,7 +26,7 @@ public class EmpresaService {
         Empresa empresaCreated = empresaRepository.save(empresa);
 
         return MessageResponseDTO.builder().
-                message(empresaCreated.getNome() + " criado com sucesso.")
+                message(empresaCreated.getNome() + " criada com sucesso.")
                 .build();
     }
 
@@ -40,7 +40,7 @@ public class EmpresaService {
         Empresa empresaUpdated = empresaRepository.save(empresa);
 
         return MessageResponseDTO.builder().
-                message(empresaUpdated.getNome() + " atualizado com sucesso.")
+                message(empresaUpdated.getNome() + " atualizada com sucesso.")
                 .build();
     }
 
