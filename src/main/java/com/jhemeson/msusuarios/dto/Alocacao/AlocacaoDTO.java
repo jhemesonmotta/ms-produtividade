@@ -13,8 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AlocacaoDTO {
     private Long id;
-    private EmpresaDTO empresa;
-    private PessoaDTO pessoa;
+    private Long empresaId;
+    private Long pessoaId;
     private String cargo;
     private String dataInicio;
     private String dataFim;

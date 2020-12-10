@@ -44,6 +44,7 @@ public class UsuarioService {
 
     public MessageResponseDTO update(UsuarioDTO usuarioDTO) {
         Usuario usuarioToUpdate = usuarioMapper.toModel(usuarioDTO);
+        usuarioToUpdate.setPessoaId(usuarioDTO.getPessoaId());
         Usuario usuarioUpdated = usuarioRepository.save(usuarioToUpdate);
 
         return MessageResponseDTO.builder().

@@ -17,13 +17,11 @@ public class Alocacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "empresa_id")
-    private Empresa empresa;
+    @Column(name = "empresa_id")
+    private Long empresaId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
-    @JoinColumn(name = "pessoa_id")
-    private Pessoa pessoa;
+    @Column(name = "pessoa_id")
+    private Long pessoaId;
 
     @Column
     private String cargo;

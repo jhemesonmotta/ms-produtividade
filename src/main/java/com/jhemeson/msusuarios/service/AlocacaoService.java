@@ -21,11 +21,14 @@ public class AlocacaoService {
 
     public MessageResponseDTO create(AlocacaoDTO alocacaoDTO) {
         Alocacao alocacao = alocacaoMapper.toModel(alocacaoDTO);
-        Alocacao alocacaoCreated = alocacaoRepository.save(alocacao);
+
+        alocacao.setPessoaId(alocacaoDTO.getPessoaId());
+        alocacao.setEmpresaId(alocacaoDTO.getEmpresaId());
+
+        alocacaoRepository.save(alocacao);
 
         return MessageResponseDTO.builder().
-                message(alocacaoCreated.getPessoa().getNome() + " - "
-                        + alocacaoCreated.getEmpresa().getNome() + " criada com sucesso.")
+                message("Alocação criada com sucesso.")
                 .build();
     }
 
@@ -36,11 +39,14 @@ public class AlocacaoService {
 
     public MessageResponseDTO update(AlocacaoDTO alocacaoDTO) {
         Alocacao alocacao = alocacaoMapper.toModel(alocacaoDTO);
-        Alocacao alocacaoUpdated = alocacaoRepository.save(alocacao);
+
+        alocacao.setPessoaId(alocacaoDTO.getPessoaId());
+        alocacao.setEmpresaId(alocacaoDTO.getEmpresaId());
+
+        alocacaoRepository.save(alocacao);
 
         return MessageResponseDTO.builder().
-                message(alocacaoUpdated.getPessoa().getNome() + " - "
-                        + alocacaoUpdated.getEmpresa().getNome() + " atualizada com sucesso.")
+                message("Alocação atualizada com sucesso.")
                 .build();
     }
 
