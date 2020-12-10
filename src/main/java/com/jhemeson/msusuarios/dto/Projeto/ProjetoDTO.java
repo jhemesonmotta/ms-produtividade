@@ -1,5 +1,6 @@
-package com.jhemeson.msusuarios.dto;
+package com.jhemeson.msusuarios.dto.Projeto;
 
+import com.jhemeson.msusuarios.dto.PageSpeedQualidadeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

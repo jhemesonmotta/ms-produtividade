@@ -1,5 +1,6 @@
 package com.jhemeson.msusuarios.dto;
 
+import com.jhemeson.msusuarios.dto.Projeto.ProjetoDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

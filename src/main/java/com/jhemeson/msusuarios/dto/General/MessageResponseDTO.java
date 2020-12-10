@@ -1,4 +1,4 @@
-package com.jhemeson.msusuarios.dto;
+package com.jhemeson.msusuarios.dto.General;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

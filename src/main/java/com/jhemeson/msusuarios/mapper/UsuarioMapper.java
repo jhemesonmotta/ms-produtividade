@@ -1,6 +1,6 @@
 package com.jhemeson.msusuarios.mapper;
 
-import com.jhemeson.msusuarios.dto.UsuarioDTO;
+import com.jhemeson.msusuarios.dto.Usuario.UsuarioDTO;
 import com.jhemeson.msusuarios.entity.Usuario;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

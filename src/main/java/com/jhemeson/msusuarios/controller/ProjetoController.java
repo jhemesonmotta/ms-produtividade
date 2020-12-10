@@ -1,8 +1,8 @@
 package com.jhemeson.msusuarios.controller;
 
 import com.jhemeson.msusuarios.dto.ComandoAddVariosProjetos;
-import com.jhemeson.msusuarios.dto.MessageResponseDTO;
-import com.jhemeson.msusuarios.dto.ProjetoDTO;
+import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Projeto.ProjetoDTO;
 import com.jhemeson.msusuarios.entity.Projeto;
 import com.jhemeson.msusuarios.service.ProjetoService;
 import javassist.NotFoundException;

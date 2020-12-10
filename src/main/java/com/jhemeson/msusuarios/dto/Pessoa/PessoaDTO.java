@@ -1,4 +1,4 @@
-package com.jhemeson.msusuarios.dto;
+package com.jhemeson.msusuarios.dto.Pessoa;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,8 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmpresaDTO {
+public class PessoaDTO {
     private Long id;
     private String nome;
-    private String dataCadastro;
+    private String genero;
+    private String dataNascimento;
+    private String perfilGithub;
 }

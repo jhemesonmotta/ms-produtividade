@@ -1,7 +1,7 @@
 package com.jhemeson.msusuarios.service;
 
-import com.jhemeson.msusuarios.dto.EmpresaDTO;
-import com.jhemeson.msusuarios.dto.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Empresa.EmpresaDTO;
+import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
 import com.jhemeson.msusuarios.entity.Empresa;
 import com.jhemeson.msusuarios.mapper.EmpresaMapper;
 import com.jhemeson.msusuarios.repository.EmpresaRepository;

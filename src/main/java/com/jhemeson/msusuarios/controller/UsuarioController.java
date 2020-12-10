@@ -1,7 +1,8 @@
 package com.jhemeson.msusuarios.controller;
 
-import com.jhemeson.msusuarios.dto.MessageResponseDTO;
-import com.jhemeson.msusuarios.dto.UsuarioDTO;
+import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Usuario.UsuarioCompletoDTO;
+import com.jhemeson.msusuarios.dto.Usuario.UsuarioDTO;
 import com.jhemeson.msusuarios.entity.Usuario;
 import com.jhemeson.msusuarios.service.UsuarioService;
 import javassist.NotFoundException;
@@ -27,7 +28,7 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public List<Usuario> listarUsuarios() {
+    public List<UsuarioCompletoDTO> listarUsuarios() throws NotFoundException {
         return usuarioService.findAll();
     }
 

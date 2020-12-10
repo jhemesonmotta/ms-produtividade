@@ -1,7 +1,7 @@
 package com.jhemeson.msusuarios.service;
 
-import com.jhemeson.msusuarios.dto.AlocacaoDTO;
-import com.jhemeson.msusuarios.dto.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Alocacao.AlocacaoDTO;
+import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
 import com.jhemeson.msusuarios.entity.Alocacao;
 import com.jhemeson.msusuarios.mapper.AlocacaoMapper;
 import com.jhemeson.msusuarios.repository.AlocacaoRepository;
