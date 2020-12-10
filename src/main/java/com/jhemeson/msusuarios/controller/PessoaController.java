@@ -2,7 +2,6 @@ package com.jhemeson.msusuarios.controller;
 
 import com.jhemeson.msusuarios.dto.MessageResponseDTO;
 import com.jhemeson.msusuarios.dto.PessoaDTO;
-import com.jhemeson.msusuarios.dto.UsuarioDTO;
 import com.jhemeson.msusuarios.entity.Pessoa;
 import com.jhemeson.msusuarios.service.PessoaService;
 import javassist.NotFoundException;
