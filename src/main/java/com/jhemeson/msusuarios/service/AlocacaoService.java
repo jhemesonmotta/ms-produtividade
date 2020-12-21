@@ -55,7 +55,16 @@ public class AlocacaoService {
     public List<Alocacao> findAll() {
         return alocacaoRepository.findAll();
     }
-    // TODO: fazer service para buscar alocação por usuário
-    // TODO: fazer service para buscar alocação por empresa
-    // TODO: fazer service para buscar alocação por usuário/empresa
+
+    public List<Alocacao> findAlocacaosByPessoaId(Long pessoaId) {
+        return alocacaoRepository.findAlocacaosByPessoaId(pessoaId);
+    }
+
+    public List<Alocacao> findAlocacaosByEmpresaId(Long empresaId) {
+        return alocacaoRepository.findAlocacaosByEmpresaId(empresaId);
+    }
+
+    public Alocacao findAlocacaoByPessoaIdAndEmpresaId(Long pessoaId, Long empresaId) {
+        return alocacaoRepository.findAlocacaoByPessoaIdAndEmpresaId(pessoaId, empresaId);
+    }
 }
