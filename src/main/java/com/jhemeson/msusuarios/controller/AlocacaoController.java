@@ -3,7 +3,6 @@ package com.jhemeson.msusuarios.controller;
 import com.jhemeson.msusuarios.dto.Alocacao.AlocacaoDTO;
 import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
 import com.jhemeson.msusuarios.entity.Alocacao;
-import com.jhemeson.msusuarios.entity.Empresa;
 import com.jhemeson.msusuarios.service.AlocacaoService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
