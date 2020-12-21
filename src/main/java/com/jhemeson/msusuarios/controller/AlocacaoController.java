@@ -26,6 +26,16 @@ public class AlocacaoController {
         return alocacaoService.findById(id);
     }
 
+    @GetMapping("pessoa/{pessoaId}")
+    public List<Alocacao> buscarAlocacaoPorIdPessoa(@PathVariable Long pessoaId) {
+        return alocacaoService.findAlocacaosByPessoaId(pessoaId);
+    }
+
+    @GetMapping("empresa/{empresaId}")
+    public List<Alocacao> buscarAlocacaoPorIdEmpresa(@PathVariable Long empresaId) {
+        return alocacaoService.findAlocacaosByEmpresaId(empresaId);
+    }
+
     @GetMapping
     public List<Alocacao> listarAlocacoes() {
         return alocacaoService.findAll();
