@@ -1,9 +1,11 @@
 package com.jhemeson.msusuarios.service;
 
 import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
+import com.jhemeson.msusuarios.dto.Pessoa.PessoaDTO;
 import com.jhemeson.msusuarios.dto.Usuario.RequestLoginDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioCompletoDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioDTO;
+import com.jhemeson.msusuarios.entity.Pessoa;
 import com.jhemeson.msusuarios.entity.Usuario;
 import com.jhemeson.msusuarios.mapper.UsuarioMapper;
 import com.jhemeson.msusuarios.repository.UsuarioRepository;
@@ -72,12 +74,24 @@ public class UsuarioService {
     private UsuarioCompletoDTO transformarParaUsuarioCompleto(Usuario usuario) throws NotFoundException {
         UsuarioDTO usuarioDTO = usuarioMapper.toDTO(usuario);
 
-        return UsuarioCompletoDTO.builder()
-                .id(usuarioDTO.getId())
-                .email(usuarioDTO.getEmail())
-                .senha(usuarioDTO.getSenha())
-                .pessoa(pessoaService.findById(usuarioDTO.getId()))
-                .build();
-    }
+        try {
+            PessoaDTO pessoa = pessoaService.findById(usuarioDTO.getPessoaId());
 
+            return UsuarioCompletoDTO.builder()
+                    .id(usuarioDTO.getId())
+                    .email(usuarioDTO.getEmail())
+                    .senha(usuarioDTO.getSenha())
+                    .pessoa(pessoa)
+                    .build();
+
+        } catch (Exception ex) {
+
+            return UsuarioCompletoDTO.builder()
+                    .id(usuarioDTO.getId())
+                    .email(usuarioDTO.getEmail())
+                    .senha(usuarioDTO.getSenha())
+                    .pessoa(PessoaDTO.builder().id(usuarioDTO.getPessoaId()).build())
+                    .build();
+        }
+    }
 }
