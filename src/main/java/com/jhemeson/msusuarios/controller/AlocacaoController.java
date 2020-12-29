@@ -1,5 +1,6 @@
 package com.jhemeson.msusuarios.controller;
 
+import com.jhemeson.msusuarios.dto.Alocacao.AlocacaoCompletaDTO;
 import com.jhemeson.msusuarios.dto.Alocacao.AlocacaoDTO;
 import com.jhemeson.msusuarios.dto.General.MessageResponseDTO;
 import com.jhemeson.msusuarios.entity.Alocacao;
@@ -27,7 +28,7 @@ public class AlocacaoController {
     }
 
     @GetMapping("pessoa/{pessoaId}")
-    public List<Alocacao> buscarAlocacaoPorIdPessoa(@PathVariable Long pessoaId) {
+    public List<AlocacaoCompletaDTO> buscarAlocacaoPorIdPessoa(@PathVariable Long pessoaId) {
         return alocacaoService.findAlocacaosByPessoaId(pessoaId);
     }
 
