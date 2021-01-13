@@ -27,6 +27,7 @@ public class EmpresaService {
 
         return MessageResponseDTO.builder().
                 message(empresaCreated.getNome() + " criada com sucesso.")
+                .id(empresaCreated.getId())
                 .build();
     }
 
@@ -41,6 +42,7 @@ public class EmpresaService {
 
         return MessageResponseDTO.builder().
                 message(empresaUpdated.getNome() + " atualizada com sucesso.")
+                .id(empresaUpdated.getId())
                 .build();
     }
 

@@ -26,7 +26,9 @@ public class PessoaService {
         Pessoa pessoaCreated = pessoaRepository.save(pessoaToCreate);
 
         return MessageResponseDTO.builder()
-                .message(pessoaCreated.getNome() + " criado com sucesso.").build();
+                .message(pessoaCreated.getNome() + " criado com sucesso.")
+                .id(pessoaCreated.getId())
+                .build();
     }
 
     public PessoaDTO findById(Long id) throws NotFoundException {
@@ -39,7 +41,9 @@ public class PessoaService {
         Pessoa pessoaUpdated = pessoaRepository.save(pessoaToUpdate);
 
         return MessageResponseDTO.builder()
-                .message(pessoaUpdated.getNome() + " atualizado com sucesso.").build();
+                .message(pessoaUpdated.getNome() + " atualizado com sucesso.")
+                .id(pessoaUpdated.getId())
+                .build();
     }
 
     public List<Pessoa> findAll() {

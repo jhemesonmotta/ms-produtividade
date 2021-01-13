@@ -5,7 +5,6 @@ import com.jhemeson.msusuarios.dto.Pessoa.PessoaDTO;
 import com.jhemeson.msusuarios.dto.Usuario.RequestLoginDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioCompletoDTO;
 import com.jhemeson.msusuarios.dto.Usuario.UsuarioDTO;
-import com.jhemeson.msusuarios.entity.Pessoa;
 import com.jhemeson.msusuarios.entity.Usuario;
 import com.jhemeson.msusuarios.mapper.UsuarioMapper;
 import com.jhemeson.msusuarios.repository.UsuarioRepository;
@@ -36,6 +35,7 @@ public class UsuarioService {
 
          return MessageResponseDTO.builder().
                 message(usuarioCreated.getEmail() + " criado com sucesso.")
+                 .id(usuarioCreated.getId())
                 .build();
     }
 
@@ -51,6 +51,7 @@ public class UsuarioService {
 
         return MessageResponseDTO.builder().
                 message(usuarioUpdated.getEmail() + " atualizado com sucesso.")
+                .id(usuarioUpdated.getId())
                 .build();
     }
 
