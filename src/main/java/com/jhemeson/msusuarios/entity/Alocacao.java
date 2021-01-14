@@ -17,10 +17,10 @@ public class Alocacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "empresa_id")
+    @Column(name = "empresa_id", nullable = false)
     private Long empresaId;
 
-    @Column(name = "pessoa_id")
+    @Column(name = "pessoa_id", nullable = false)
     private Long pessoaId;
 
     @Column
