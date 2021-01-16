@@ -66,8 +66,7 @@ public class AlocacaoService {
         return alocacaoRepository.findAll();
     }
 
-    public List<AlocacaoCompletaDTO> findAlocacaosByPessoaId(Long pessoaId) {
-        List<Alocacao> alocacaos = alocacaoRepository.findAlocacaosByPessoaId(pessoaId);
+    private List<AlocacaoCompletaDTO> transformaListaAlocacaoEmAlocacaoCompleta(List<Alocacao> alocacaos) {
         List<AlocacaoCompletaDTO> alocacaoCompletaDTOS = new ArrayList<>();
 
         for (Alocacao a: alocacaos) {
@@ -77,8 +76,14 @@ public class AlocacaoService {
         return alocacaoCompletaDTOS;
     }
 
-    public List<Alocacao> findAlocacaosByEmpresaId(Long empresaId) {
-        return alocacaoRepository.findAlocacaosByEmpresaId(empresaId);
+    public List<AlocacaoCompletaDTO> findAlocacaosByPessoaId(Long pessoaId) {
+        List<Alocacao> alocacaos = alocacaoRepository.findAlocacaosByPessoaId(pessoaId);
+        return transformaListaAlocacaoEmAlocacaoCompleta(alocacaos);
+    }
+
+    public List<AlocacaoCompletaDTO> findAlocacaosByEmpresaId(Long empresaId) {
+        List<Alocacao> alocacaos = alocacaoRepository.findAlocacaosByEmpresaId(empresaId);
+        return transformaListaAlocacaoEmAlocacaoCompleta(alocacaos);
     }
 
     public Alocacao findAlocacaoByPessoaIdAndEmpresaId(Long pessoaId, Long empresaId) {
