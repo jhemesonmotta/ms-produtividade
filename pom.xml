@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.jhemeson</groupId>
-	<artifactId>ms-usuarios</artifactId>
+	<artifactId>ms-produtividade</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ms-usuarios</name>
-	<description>Back pro projeto do mestrado - microsserviço de usuários</description>
+	<description>Back pro projeto do mestrado - microsserviço de CRUD de produtividade</description>
 
 	<properties>
 		<java.version>1.8</java.version>
