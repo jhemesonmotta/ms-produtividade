@@ -23,10 +23,11 @@ public class FatorMedidoPorPessoaService {
 
 	public MessageResponseDTO create(FatorMedidoPorPessoaDTO fatorMedidoPorPessoaDTO) {
 		FatorMedidoPorPessoa fator = fatorMedidoPorPessoaMapper.toModel(fatorMedidoPorPessoaDTO);
-		fatorMedidoPorPessoaRepository.save(fator);
+		FatorMedidoPorPessoa fatorCriado = fatorMedidoPorPessoaRepository.save(fator);
 
-		return MessageResponseDTO.builder().
-				message("Fator medido com sucesso.")
+		return MessageResponseDTO.builder()
+				.id(fatorCriado.getId())
+				.message("Fator medido com sucesso.")
 				.build();
 	}
 

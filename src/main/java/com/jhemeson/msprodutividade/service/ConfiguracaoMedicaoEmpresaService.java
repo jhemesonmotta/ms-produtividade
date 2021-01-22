@@ -23,10 +23,11 @@ public class ConfiguracaoMedicaoEmpresaService {
 
 	public MessageResponseDTO create(ConfiguracaoMedicaoEmpresaDTO configuracaoMedicaoEmpresaDTO) {
 		ConfiguracaoMedicaoEmpresa configuracaoMedicaoEmpresa = configuracaoMedicaoEmpresaMapper.toModel(configuracaoMedicaoEmpresaDTO);
-		configuracaoMedicaoEmpresaRepository.save(configuracaoMedicaoEmpresa);
+		ConfiguracaoMedicaoEmpresa configCriada = configuracaoMedicaoEmpresaRepository.save(configuracaoMedicaoEmpresa);
 
-		return MessageResponseDTO.builder().
-				message("Configuração criada com sucesso.")
+		return MessageResponseDTO.builder()
+				.id(configCriada.getId())
+				.message("Configuração criada com sucesso.")
 				.build();
 	}
 

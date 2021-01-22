@@ -23,10 +23,11 @@ public class FatorService {
 
 	public MessageResponseDTO create(FatorDTO fatorDTO) {
 		Fator fator = fatorMapper.toModel(fatorDTO);
-		fatorRepository.save(fator);
+		Fator fatorCriado = fatorRepository.save(fator);
 
-		return MessageResponseDTO.builder().
-				message("Fator criado com sucesso.")
+		return MessageResponseDTO.builder()
+				.id(fatorCriado.getId())
+				.message("Fator criado com sucesso.")
 				.build();
 	}
 

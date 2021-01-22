@@ -23,10 +23,11 @@ public class MedicaoPorEmpresaService {
 
 	public MessageResponseDTO create(MedicaoPorEmpresaDTO medicaoPorEmpresaDTO) {
 		MedicaoPorEmpresa medicaoPorEmpresa = medicaoPorEmpresaMapper.toModel(medicaoPorEmpresaDTO);
-		medicaoPorEmpresaRepository.save(medicaoPorEmpresa);
+		MedicaoPorEmpresa medicaoCriada = medicaoPorEmpresaRepository.save(medicaoPorEmpresa);
 
-		return MessageResponseDTO.builder().
-				message("Medição criada com sucesso.")
+		return MessageResponseDTO.builder()
+				.id(medicaoCriada.getId())
+				.message("Medição criada com sucesso.")
 				.build();
 	}
 
