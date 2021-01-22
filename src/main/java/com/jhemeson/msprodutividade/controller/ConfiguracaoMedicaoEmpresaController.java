@@ -1,14 +1,12 @@
 package com.jhemeson.msprodutividade.controller;
 
 import com.jhemeson.msprodutividade.dto.ConfiguracaoMedicaoEmpresa.ConfiguracaoMedicaoEmpresaDTO;
+import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
 import com.jhemeson.msprodutividade.entity.ConfiguracaoMedicaoEmpresa;
 import com.jhemeson.msprodutividade.service.ConfiguracaoMedicaoEmpresaService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,5 +29,15 @@ public class ConfiguracaoMedicaoEmpresaController {
 	@GetMapping
 	public List<ConfiguracaoMedicaoEmpresa> listar() {
 		return configuracaoMedicaoEmpresaService.findAll();
+	}
+
+	@PostMapping
+	public MessageResponseDTO adicionar(@RequestBody ConfiguracaoMedicaoEmpresaDTO configuracaoMedicaoEmpresaDTO) {
+		return configuracaoMedicaoEmpresaService.create(configuracaoMedicaoEmpresaDTO);
+	}
+
+	@PutMapping
+	public MessageResponseDTO atualizar(@RequestBody ConfiguracaoMedicaoEmpresaDTO configuracaoMedicaoEmpresaDTO) {
+		return configuracaoMedicaoEmpresaService.update(configuracaoMedicaoEmpresaDTO);
 	}
 }
