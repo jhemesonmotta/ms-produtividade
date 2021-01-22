@@ -1,0 +1,9 @@
+package com.jhemeson.msprodutividade.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/medicao/empresa")
+public class MedicaoPorEmpresaController {
+}
