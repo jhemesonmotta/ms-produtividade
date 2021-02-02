@@ -40,4 +40,5 @@ public class MedicaoPorEmpresaController {
 	public MessageResponseDTO atualizar(@RequestBody MedicaoPorEmpresaDTO medicaoPorEmpresaDTO) {
 		return medicaoPorEmpresaService.update(medicaoPorEmpresaDTO);
 	}
+
 }

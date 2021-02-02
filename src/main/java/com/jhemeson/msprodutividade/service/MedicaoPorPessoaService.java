@@ -49,4 +49,8 @@ public class MedicaoPorPessoaService {
 	public List<MedicaoPorPessoa> findAll() {
 		return medicaoPorPessoaRepository.findAll();
 	}
+
+	public List<MedicaoPorPessoa> findAllByMedicaoEmpresaId(Long medicaoEmpresaId) {
+		return medicaoPorPessoaRepository.findMedicaoPorPessoasByMedicaoEmpresaId(medicaoEmpresaId);
+	}
 }
