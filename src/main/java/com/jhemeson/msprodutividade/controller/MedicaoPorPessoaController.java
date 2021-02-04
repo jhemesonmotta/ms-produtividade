@@ -31,9 +31,9 @@ public class MedicaoPorPessoaController {
 		return medicaoPorPessoaService.findAll();
 	}
 
-	@GetMapping("/medicao/{idEmpresa}")
-	public List<MedicaoPorPessoa> listarPorEmpresa(@PathVariable Long idEmpresa) {
-		return medicaoPorPessoaService.findAllByMedicaoEmpresaId(idEmpresa);
+	@GetMapping("/medicao/{idMedicaoEmpresa}")
+	public List<MedicaoPorPessoa> listarPorEmpresa(@PathVariable Long idMedicaoEmpresa) {
+		return medicaoPorPessoaService.findAllByMedicaoEmpresaId(idMedicaoEmpresa);
 	}
 
 	@PostMapping

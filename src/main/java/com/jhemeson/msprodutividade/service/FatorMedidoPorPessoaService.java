@@ -48,4 +48,8 @@ public class FatorMedidoPorPessoaService {
 	public List<FatorMedidoPorPessoa> findAll() {
 		return fatorMedidoPorPessoaRepository.findAll();
 	}
+
+	public List<FatorMedidoPorPessoa> findAllByMedicaoId(Long medicaoId) {
+		return fatorMedidoPorPessoaRepository.findFatorMedidoPorPessoasByMedicaoPorPessoaId(medicaoId);
+	}
 }

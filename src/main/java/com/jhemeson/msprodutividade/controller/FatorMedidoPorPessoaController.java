@@ -3,6 +3,7 @@ package com.jhemeson.msprodutividade.controller;
 import com.jhemeson.msprodutividade.dto.FatorMedidoPorPessoa.FatorMedidoPorPessoaDTO;
 import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
 import com.jhemeson.msprodutividade.entity.FatorMedidoPorPessoa;
+import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import com.jhemeson.msprodutividade.service.FatorMedidoPorPessoaService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class FatorMedidoPorPessoaController {
 	@GetMapping
 	public List<FatorMedidoPorPessoa> listar() {
 		return fatorMedidoPorPessoaService.findAll();
+	}
+
+	@GetMapping("medicao/{medicaoId}")
+	public List<FatorMedidoPorPessoa> listarPorMedicao(@PathVariable Long medicaoId) {
+		return fatorMedidoPorPessoaService.findAllByMedicaoId(medicaoId);
 	}
 
 	@PostMapping
