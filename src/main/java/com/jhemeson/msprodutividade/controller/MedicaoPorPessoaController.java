@@ -1,6 +1,7 @@
 package com.jhemeson.msprodutividade.controller;
 
 import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
+import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPessoaComFatoresDTO;
 import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPorPessoaDTO;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import com.jhemeson.msprodutividade.service.MedicaoPorPessoaService;
@@ -32,7 +33,7 @@ public class MedicaoPorPessoaController {
 	}
 
 	@GetMapping("/medicao/{idMedicaoEmpresa}")
-	public List<MedicaoPorPessoa> listarPorEmpresa(@PathVariable Long idMedicaoEmpresa) {
+	public List<MedicaoPessoaComFatoresDTO> listarPorEmpresa(@PathVariable Long idMedicaoEmpresa) {
 		return medicaoPorPessoaService.findAllByMedicaoEmpresaId(idMedicaoEmpresa);
 	}
 

@@ -1,7 +1,9 @@
 package com.jhemeson.msprodutividade.service;
 
 import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
+import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPessoaComFatoresDTO;
 import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPorPessoaDTO;
+import com.jhemeson.msprodutividade.entity.FatorMedidoPorPessoa;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import com.jhemeson.msprodutividade.mapper.MedicaoPorPessoaMapper;
 import com.jhemeson.msprodutividade.repository.MedicaoPorPessoaRepository;
@@ -9,16 +11,20 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class MedicaoPorPessoaService {
 	private MedicaoPorPessoaRepository medicaoPorPessoaRepository;
+	private FatorMedidoPorPessoaService fatorMedidoPorPessoaService;
+
 	private final MedicaoPorPessoaMapper medicaoPorPessoaMapper = MedicaoPorPessoaMapper.INSTANCE;
 
 	@Autowired
-	public MedicaoPorPessoaService(MedicaoPorPessoaRepository medicaoPorPessoaRepository){
+	public MedicaoPorPessoaService(MedicaoPorPessoaRepository medicaoPorPessoaRepository, FatorMedidoPorPessoaService fatorMedidoPorPessoaService){
 		this.medicaoPorPessoaRepository = medicaoPorPessoaRepository;
+		this.fatorMedidoPorPessoaService = fatorMedidoPorPessoaService;
 	}
 
 	public MessageResponseDTO create(MedicaoPorPessoaDTO medicaoPorPessoaDTO) {
@@ -50,7 +56,22 @@ public class MedicaoPorPessoaService {
 		return medicaoPorPessoaRepository.findAll();
 	}
 
-	public List<MedicaoPorPessoa> findAllByMedicaoEmpresaId(Long medicaoEmpresaId) {
-		return medicaoPorPessoaRepository.findMedicaoPorPessoasByMedicaoEmpresaId(medicaoEmpresaId);
+	public List<MedicaoPessoaComFatoresDTO> findAllByMedicaoEmpresaId(Long medicaoEmpresaId) {
+		List<MedicaoPorPessoa> medicaoPorPessoaList = medicaoPorPessoaRepository.findMedicaoPorPessoasByMedicaoEmpresaId(medicaoEmpresaId);
+		List<MedicaoPessoaComFatoresDTO> medicaoPessoaComFatoresDTOList = new ArrayList<>();
+
+		for (MedicaoPorPessoa mp: medicaoPorPessoaList) {
+			MedicaoPorPessoaDTO medicaoPorPessoaDTO = medicaoPorPessoaMapper.toDTO(mp);
+			List<FatorMedidoPorPessoa> fatoresMedidos = fatorMedidoPorPessoaService.findAllByMedicaoId(mp.getId());
+
+			MedicaoPessoaComFatoresDTO medicaoPessoaComFatoresDTO = MedicaoPessoaComFatoresDTO.builder()
+					.medicaoPorPessoa(medicaoPorPessoaDTO)
+					.fatoresMedidos(fatoresMedidos)
+					.build();
+			medicaoPessoaComFatoresDTOList.add(medicaoPessoaComFatoresDTO);
+		}
+
+		return medicaoPessoaComFatoresDTOList;
 	}
+
 }
