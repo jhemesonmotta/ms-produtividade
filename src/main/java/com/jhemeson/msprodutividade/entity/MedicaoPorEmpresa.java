@@ -26,6 +26,9 @@ public class MedicaoPorEmpresa {
 	@Column(nullable = false, name = "configuracao_medicao_id")
 	private Long configuracaoMedicaoId;
 
+	@Column(name = "nota_fechada")
+	private Double notaFechada;
+
 	@Column(name = "data_criacao", nullable = false)
 	private String dataCriacao;
 

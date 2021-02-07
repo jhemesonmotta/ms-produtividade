@@ -16,6 +16,7 @@ public class MedicaoPorEmpresaDTO {
 	private Long criadorId;
 	private Long empresaId;
 	private Long configuracaoMedicaoId;
+	private Double notaFechada;
 	private String dataCriacao;
 	private String dataFechamento;
 	private boolean status;
