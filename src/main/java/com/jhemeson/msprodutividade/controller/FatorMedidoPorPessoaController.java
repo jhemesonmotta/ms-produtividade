@@ -1,6 +1,7 @@
 package com.jhemeson.msprodutividade.controller;
 
 import com.jhemeson.msprodutividade.dto.FatorMedidoPorPessoa.FatorMedidoPorPessoaDTO;
+import com.jhemeson.msprodutividade.dto.FatorMedidoPorPessoa.ListaFatoresDTO;
 import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
 import com.jhemeson.msprodutividade.entity.FatorMedidoPorPessoa;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
@@ -9,6 +10,7 @@ import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,6 +42,18 @@ public class FatorMedidoPorPessoaController {
 	@PostMapping
 	public MessageResponseDTO adicionar(@RequestBody FatorMedidoPorPessoaDTO fatorMedidoPorPessoaDTO) {
 		return fatorMedidoPorPessoaService.create(fatorMedidoPorPessoaDTO);
+	}
+
+	@PostMapping("/lista")
+	public List<MessageResponseDTO> adicionarLista(@RequestBody ListaFatoresDTO listaFatoresDTO) {
+		List<MessageResponseDTO> retornos = new ArrayList<>();
+
+		for (FatorMedidoPorPessoaDTO fmpt: listaFatoresDTO.getListaFatores()) {
+			MessageResponseDTO retorno = fatorMedidoPorPessoaService.create(fmpt);
+			retornos.add(retorno);
+		}
+
+		return retornos;
 	}
 
 	@PutMapping
