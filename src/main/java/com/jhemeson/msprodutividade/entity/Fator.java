@@ -33,4 +33,8 @@ public class Fator {
 
 	@Column
 	private String textoDoInputTextual;
+
+	@Column
+	@Builder.Default
+	private Boolean ativo = true;
 }

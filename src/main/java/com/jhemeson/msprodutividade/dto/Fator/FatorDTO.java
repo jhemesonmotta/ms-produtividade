@@ -18,5 +18,6 @@ public class FatorDTO {
 	private double pesoDefault;
 	private String categoria;
 	private String textoDoInputTextual;
-
+	@Builder.Default
+	private Boolean ativo = true;
 }
