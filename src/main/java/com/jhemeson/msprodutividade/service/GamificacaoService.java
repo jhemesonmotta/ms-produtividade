@@ -1,5 +1,6 @@
 package com.jhemeson.msprodutividade.service;
 
+import com.jhemeson.msprodutividade.dto.Gamificacao.ItemLeaderboardEmpresaDTO;
 import com.jhemeson.msprodutividade.dto.Gamificacao.LeaderboardFidelidade;
 import com.jhemeson.msprodutividade.entity.MedicaoPorEmpresa;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
@@ -55,9 +56,17 @@ public class GamificacaoService {
         return leaderboardFidelidade;
     }
 
-    public List<ItemLeaderboardEmpresa> leaderboardEmpresas() {
-        // TODO: criar um DTO e buscar os GamAvaliacaoEmpresa por leaderboard.
-        return leaderboardEmpresaRepository.findAll();
+    public List<ItemLeaderboardEmpresaDTO> leaderboardEmpresas() {
+        List<ItemLeaderboardEmpresa> leaderboardModel = leaderboardEmpresaRepository.findAll();
+
+        List<ItemLeaderboardEmpresaDTO> leaderboard = leaderboardModel.stream().map(item -> ItemLeaderboardEmpresaDTO
+                .builder()
+                .id(item.getId())
+                .dtCriacao(item.getDtCriacao())
+                .avaliacoes(gamAvaliacaoEmpresaRepository.findGamAvaliacaoEmpresasByLeaderboardId(item.getId()))
+        .build()).collect(Collectors.toList());
+
+        return leaderboard;
     }
 
     public void registrarLeaderboardEmpresas() {

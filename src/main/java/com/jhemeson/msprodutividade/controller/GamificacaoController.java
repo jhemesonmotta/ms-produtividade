@@ -1,5 +1,6 @@
 package com.jhemeson.msprodutividade.controller;
 
+import com.jhemeson.msprodutividade.dto.Gamificacao.ItemLeaderboardEmpresaDTO;
 import com.jhemeson.msprodutividade.dto.Gamificacao.LeaderboardFidelidade;
 import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.ItemLeaderboardEmpresa;
 import com.jhemeson.msprodutividade.service.GamificacaoService;
@@ -34,7 +35,7 @@ public class GamificacaoController {
     }
 
     @GetMapping("/leaderboard/empresas")
-    public List<ItemLeaderboardEmpresa> leaderboardEmpresas() {
+    public List<ItemLeaderboardEmpresaDTO> leaderboardEmpresas() {
         return gamificacaoService.leaderboardEmpresas();
     }
 }
