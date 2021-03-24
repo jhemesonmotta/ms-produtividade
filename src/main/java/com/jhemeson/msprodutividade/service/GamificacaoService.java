@@ -11,7 +11,10 @@ import com.jhemeson.msprodutividade.repository.LeaderboardEmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -69,9 +72,26 @@ public class GamificacaoService {
         return leaderboard;
     }
 
-    public void registrarLeaderboardEmpresas() {
+    public List<GamAvaliacaoEmpresa> registrarLeaderboardEmpresas() {
         List<MedicaoPorEmpresa> todasMedicoes = medicaoPorEmpresaService.findAll();
-        todasMedicoes = todasMedicoes.stream().filter(m -> m.getNotaFechada() != null && m.getNotaFechada() > 0).collect(Collectors.toList());
+        todasMedicoes = todasMedicoes.stream()
+                .filter(m -> {
+                    try {
+                        if (m.getNotaFechada() != null && m.getNotaFechada() > 0 && m.getDataFechamento() != null) {
+                            Date dataFechamento = new SimpleDateFormat("dd/MM/yyyy").parse(m.getDataFechamento());
+                            Date umMesAtras = new Date();
+                            umMesAtras.setMonth(umMesAtras.getMonth()-1);
+
+                            if (dataFechamento.after(umMesAtras)) {
+                                return true;
+                            }
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return false;
+                })
+                .collect(Collectors.toList());
 
         // TODO: pegar só medições fechadas no ultimo mes
 
@@ -104,7 +124,7 @@ public class GamificacaoService {
             avaliacoesPorEmpresaSalvas.add(gamAvaliacaoEmpresaRepository.save(ae));
         });
 
-        String teste = "teste";
+        return avaliacoesPorEmpresa;
     }
 
 }

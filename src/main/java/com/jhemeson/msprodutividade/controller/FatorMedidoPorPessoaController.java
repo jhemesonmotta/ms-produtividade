@@ -4,7 +4,6 @@ import com.jhemeson.msprodutividade.dto.FatorMedidoPorPessoa.FatorMedidoPorPesso
 import com.jhemeson.msprodutividade.dto.FatorMedidoPorPessoa.ListaFatoresDTO;
 import com.jhemeson.msprodutividade.dto.General.MessageResponseDTO;
 import com.jhemeson.msprodutividade.entity.FatorMedidoPorPessoa;
-import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import com.jhemeson.msprodutividade.service.FatorMedidoPorPessoaService;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

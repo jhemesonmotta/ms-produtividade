@@ -1,6 +1,5 @@
 package com.jhemeson.msprodutividade.mapper;
 
-import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPessoaComFatoresDTO;
 import com.jhemeson.msprodutividade.dto.MedicaoPorPessoa.MedicaoPorPessoaDTO;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import org.mapstruct.Mapper;

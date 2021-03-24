@@ -2,7 +2,7 @@ package com.jhemeson.msprodutividade.controller;
 
 import com.jhemeson.msprodutividade.dto.Gamificacao.ItemLeaderboardEmpresaDTO;
 import com.jhemeson.msprodutividade.dto.Gamificacao.LeaderboardFidelidade;
-import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.ItemLeaderboardEmpresa;
+import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.GamAvaliacaoEmpresa;
 import com.jhemeson.msprodutividade.service.GamificacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,9 +29,8 @@ public class GamificacaoController {
     }
 
     @PostMapping("/leaderboard/empresas")
-    public List<LeaderboardFidelidade> addLeaderboardEmpresas() {
-        gamificacaoService.registrarLeaderboardEmpresas();
-        return gamificacaoService.leaderboardFidelidade();
+    public List<GamAvaliacaoEmpresa> addLeaderboardEmpresas() {
+        return gamificacaoService.registrarLeaderboardEmpresas();
     }
 
     @GetMapping("/leaderboard/empresas")

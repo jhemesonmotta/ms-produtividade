@@ -1,7 +1,6 @@
 package com.jhemeson.msprodutividade.dto.Gamificacao;
 
 import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.GamAvaliacaoEmpresa;
-import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.ItemLeaderboardEmpresa;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
