@@ -6,14 +6,17 @@ import com.jhemeson.msprodutividade.entity.MedicaoPorEmpresa;
 import com.jhemeson.msprodutividade.entity.MedicaoPorPessoa;
 import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.GamAvaliacaoEmpresa;
 import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.ItemLeaderboardEmpresa;
+import com.jhemeson.msprodutividade.entity.trofeus.TrofeuProdutividade;
 import com.jhemeson.msprodutividade.repository.GamAvaliacaoEmpresaRepository;
 import com.jhemeson.msprodutividade.repository.LeaderboardEmpresaRepository;
+import com.jhemeson.msprodutividade.repository.TrofeuCampeaoProdutividadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,18 +26,22 @@ public class GamificacaoService {
 
     private MedicaoPorPessoaService medicaoPorPessoaService;
     private MedicaoPorEmpresaService medicaoPorEmpresaService;
+
     private LeaderboardEmpresaRepository leaderboardEmpresaRepository;
     private GamAvaliacaoEmpresaRepository gamAvaliacaoEmpresaRepository;
+    private TrofeuCampeaoProdutividadeRepository trofeuRepository;
 
     @Autowired
     public GamificacaoService(MedicaoPorPessoaService medicaoPorPessoaService,
                               LeaderboardEmpresaRepository leaderboardEmpresaRepository,
                               MedicaoPorEmpresaService medicaoPorEmpresaService,
-                              GamAvaliacaoEmpresaRepository gamAvaliacaoEmpresaRepository) {
+                              GamAvaliacaoEmpresaRepository gamAvaliacaoEmpresaRepository,
+                              TrofeuCampeaoProdutividadeRepository trofeuRepository) {
         this.medicaoPorPessoaService = medicaoPorPessoaService;
         this.leaderboardEmpresaRepository = leaderboardEmpresaRepository;
         this.medicaoPorEmpresaService = medicaoPorEmpresaService;
         this.gamAvaliacaoEmpresaRepository = gamAvaliacaoEmpresaRepository;
+        this.trofeuRepository = trofeuRepository;
     }
 
     public List<LeaderboardFidelidade> leaderboardFidelidade() {
@@ -127,4 +134,37 @@ public class GamificacaoService {
         return avaliacoesPorEmpresa;
     }
 
+    public List<TrofeuProdutividade> registrarTrofeus() {
+        List<ItemLeaderboardEmpresaDTO> leaderboardList = leaderboardEmpresas();
+        List<TrofeuProdutividade> trofeusList = new ArrayList<>();
+
+        if (!leaderboardList.isEmpty()) {
+            ItemLeaderboardEmpresaDTO leaderboardItem = leaderboardList.get(leaderboardList.size()-1);
+            List<GamAvaliacaoEmpresa> avaliacoes = leaderboardItem.getAvaliacoes();
+
+            if (!avaliacoes.isEmpty()) {
+                Collections.sort(avaliacoes);
+                Collections.reverse(avaliacoes);
+                avaliacoes = avaliacoes.stream().limit(3).collect(Collectors.toList());
+
+                int pos = 1;
+
+                for (GamAvaliacaoEmpresa a: avaliacoes) {
+
+                    TrofeuProdutividade t = TrofeuProdutividade.builder()
+                            .posicaoPodio(pos)
+                            .empresaId(a.getEmpresaId())
+                            .descricao("Troféu Produtividade")
+                            .build();
+
+                    trofeusList.add(trofeuRepository.save(t));
+                    pos = pos + 1;
+                }
+
+                return trofeusList;
+            }
+        }
+
+        return null;
+    }
 }

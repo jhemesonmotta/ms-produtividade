@@ -3,6 +3,7 @@ package com.jhemeson.msprodutividade.controller;
 import com.jhemeson.msprodutividade.dto.Gamificacao.ItemLeaderboardEmpresaDTO;
 import com.jhemeson.msprodutividade.dto.Gamificacao.LeaderboardFidelidade;
 import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.GamAvaliacaoEmpresa;
+import com.jhemeson.msprodutividade.entity.trofeus.TrofeuProdutividade;
 import com.jhemeson.msprodutividade.service.GamificacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +29,22 @@ public class GamificacaoController {
         return gamificacaoService.leaderboardFidelidade();
     }
 
+    @GetMapping("/leaderboard/empresas")
+    public List<ItemLeaderboardEmpresaDTO> leaderboardEmpresas() {
+        return gamificacaoService.leaderboardEmpresas();
+    }
+
     @PostMapping("/leaderboard/empresas")
     public List<GamAvaliacaoEmpresa> addLeaderboardEmpresas() {
         return gamificacaoService.registrarLeaderboardEmpresas();
     }
 
-    @GetMapping("/leaderboard/empresas")
-    public List<ItemLeaderboardEmpresaDTO> leaderboardEmpresas() {
-        return gamificacaoService.leaderboardEmpresas();
+    @PostMapping("/trofeus/empresas")
+    public List<TrofeuProdutividade> addTrofeusEmpresas() {
+        return gamificacaoService.registrarTrofeus();
     }
+
+    // TODO: criar endpoint para buscar trofeus por id da empresa
+
+    // TODO: criar endpoint para buscar todos os troféus
 }

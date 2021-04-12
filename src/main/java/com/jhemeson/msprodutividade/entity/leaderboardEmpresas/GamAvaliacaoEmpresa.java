@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GamAvaliacaoEmpresa {
+public class GamAvaliacaoEmpresa implements Comparable<GamAvaliacaoEmpresa> {
 
     @Id
     @Column(name = "ID_MEDICAO")
@@ -28,4 +28,11 @@ public class GamAvaliacaoEmpresa {
     @Column(name = "media_avaliacao")
     private Double mediaAvaliacao;
 
+    @Override
+    public int compareTo(GamAvaliacaoEmpresa u) {
+        if (getMediaAvaliacao() == null || u.getMediaAvaliacao() == null) {
+            return 0;
+        }
+        return getMediaAvaliacao().compareTo(u.getMediaAvaliacao());
+    }
 }
