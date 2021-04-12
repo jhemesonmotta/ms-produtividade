@@ -167,4 +167,16 @@ public class GamificacaoService {
 
         return null;
     }
+
+    public List<TrofeuProdutividade> todosTrofeus() {
+        return trofeuRepository.findAll();
+    }
+
+    public List<TrofeuProdutividade> trofeusPorEmpresa(Long empresaId) {
+        return trofeuRepository
+                .findAll()
+                .stream()
+                .filter(e -> e.getEmpresaId() == empresaId)
+                .collect(Collectors.toList());
+    }
 }

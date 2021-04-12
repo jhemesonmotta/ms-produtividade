@@ -6,10 +6,7 @@ import com.jhemeson.msprodutividade.entity.leaderboardEmpresas.GamAvaliacaoEmpre
 import com.jhemeson.msprodutividade.entity.trofeus.TrofeuProdutividade;
 import com.jhemeson.msprodutividade.service.GamificacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,7 +41,14 @@ public class GamificacaoController {
         return gamificacaoService.registrarTrofeus();
     }
 
-    // TODO: criar endpoint para buscar trofeus por id da empresa
+    @GetMapping("/trofeus/empresas")
+    public List<TrofeuProdutividade> trofeusEmpresas() {
+        return gamificacaoService.todosTrofeus();
+    }
 
-    // TODO: criar endpoint para buscar todos os troféus
+    @GetMapping("/trofeus/empresas/{idEmpresa}")
+    public List<TrofeuProdutividade> trofeusPorEmpresa(@PathVariable Long idEmpresa) {
+        return gamificacaoService.trofeusPorEmpresa(idEmpresa);
+    }
+
 }
