@@ -100,8 +100,6 @@ public class GamificacaoService {
                 })
                 .collect(Collectors.toList());
 
-        // TODO: pegar só medições fechadas no ultimo mes
-
         List<GamAvaliacaoEmpresa> avaliacoesPorEmpresa = new ArrayList<>();
         List<GamAvaliacaoEmpresa> avaliacoesPorEmpresaSalvas = new ArrayList<>();
 

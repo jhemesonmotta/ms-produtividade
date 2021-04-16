@@ -33,7 +33,7 @@ public class MedicaoPorPessoaService {
 
 		return MessageResponseDTO.builder()
 				.id(medicaoCriada.getId())
-				.message("Medição criada com sucesso.")
+				.message("\uD83D\uDC4D \uD83D\uDC4D Medição criada com sucesso. Falta pouco para finalizar o processo.")
 				.build();
 	}
 

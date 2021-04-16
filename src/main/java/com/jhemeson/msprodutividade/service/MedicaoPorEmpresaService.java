@@ -27,7 +27,7 @@ public class MedicaoPorEmpresaService {
 
 		return MessageResponseDTO.builder()
 				.id(medicaoCriada.getId())
-				.message("Medição criada com sucesso.")
+				.message("Medição criada com sucesso. Falta pouco para finalizar o processo.")
 				.build();
 	}
 

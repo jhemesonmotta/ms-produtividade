@@ -27,7 +27,7 @@ public class FatorMedidoPorPessoaService {
 
 		return MessageResponseDTO.builder()
 				.id(fatorCriado.getId())
-				.message("Fator medido com sucesso.")
+				.message("\uD83D\uDC4D \uD83D\uDC4D Obrigado por nos contar mais sobre sua percepção. Sua medição de produtividade foi concluída.")
 				.build();
 	}
 
