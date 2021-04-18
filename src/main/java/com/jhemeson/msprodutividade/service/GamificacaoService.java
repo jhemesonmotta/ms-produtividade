@@ -151,7 +151,7 @@ public class GamificacaoService {
         medicoesDaEmpresa = medicoesDaEmpresa.stream()
                 .filter(m -> {
                     try {
-                        return new SimpleDateFormat("dd/MM/yyyy").parse(m.getDataFechamento()).getMonth() == new Date().getMonth();
+                        return new SimpleDateFormat("dd/MM/yyyy").parse(m.getDataFechamento()).getMonth() == (new Date().getMonth() - 1);
                     } catch (ParseException e) {
                         return false;
                     }
