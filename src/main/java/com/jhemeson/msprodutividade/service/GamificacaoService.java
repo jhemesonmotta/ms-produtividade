@@ -80,7 +80,9 @@ public class GamificacaoService {
     }
 
     public List<GamAvaliacaoEmpresa> registrarLeaderboardEmpresas() {
+
         List<MedicaoPorEmpresa> todasMedicoes = medicaoPorEmpresaService.findAll();
+
         todasMedicoes = todasMedicoes.stream()
                 .filter(m -> {
                     try {
@@ -103,11 +105,19 @@ public class GamificacaoService {
         List<GamAvaliacaoEmpresa> avaliacoesPorEmpresa = new ArrayList<>();
         List<GamAvaliacaoEmpresa> avaliacoesPorEmpresaSalvas = new ArrayList<>();
 
+        List<MedicaoPorEmpresa> finalTodasMedicoes = todasMedicoes;
+
         todasMedicoes.stream().forEach(medicaoPorEmpresa -> {
+
+            boolean ehCombo = ehCombo(finalTodasMedicoes, medicaoPorEmpresa);
             if (avaliacoesPorEmpresa.stream().anyMatch(gae -> gae.getEmpresaId() == medicaoPorEmpresa.getEmpresaId())) {
                 // se já existir: atualiza
                 GamAvaliacaoEmpresa avalEmpresa = avaliacoesPorEmpresa.stream().filter(ae -> ae.getEmpresaId() == medicaoPorEmpresa.getEmpresaId()).collect(Collectors.toList()).get(0);
-                avalEmpresa.setMediaAvaliacao((avalEmpresa.getMediaAvaliacao() + medicaoPorEmpresa.getNotaFechada())/2);
+
+                double media = (avalEmpresa.getMediaAvaliacao() + medicaoPorEmpresa.getNotaFechada())/2;
+                media = ehCombo ? (media * 1.1) : media;
+
+                avalEmpresa.setMediaAvaliacao(media);
             } else {
                 // se não: adiciona
                 GamAvaliacaoEmpresa novoItem = GamAvaliacaoEmpresa
@@ -130,6 +140,27 @@ public class GamificacaoService {
         });
 
         return avaliacoesPorEmpresa;
+    }
+
+    public boolean ehCombo(List<MedicaoPorEmpresa> todasMedicoes, MedicaoPorEmpresa med) {
+
+        List<MedicaoPorEmpresa> medicoesDaEmpresa = todasMedicoes.stream()
+                .filter(m -> m.getEmpresaId() == med.getEmpresaId())
+                .collect(Collectors.toList());
+
+        medicoesDaEmpresa = medicoesDaEmpresa.stream()
+                .filter(m -> {
+                    try {
+                        return new SimpleDateFormat("dd/MM/yyyy").parse(m.getDataFechamento()).getMonth() == new Date().getMonth();
+                    } catch (ParseException e) {
+                        return false;
+                    }
+                })
+                .collect(Collectors.toList());
+
+        // ou seja: é considerado como combo se tiver pelo menos 3 medições por mês
+        return medicoesDaEmpresa.size() >= 3;
+
     }
 
     public List<TrofeuProdutividade> registrarTrofeus() {
